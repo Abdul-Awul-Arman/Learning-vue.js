@@ -1,19 +1,19 @@
 // composables/usePosts.js
-import { onMounted, ref } from 'vue'
+import { ref } from 'vue';
 
-const usePosts = () => {
-    const posts = ref([])
+const usePosts = (id = "") => {
+    let posts = ref([])
+    let post = ref([])
     const isLoading = ref(false)
+
 
     const fetchPosts = async () => {
         isLoading.value = true
 
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/posts')
+            const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
             const data = await response.json()
-            posts.value = data
-
-
+            id ? post.value = data : posts.value = data;
 
         }
         catch (error) {
@@ -24,12 +24,16 @@ const usePosts = () => {
         }
     }
 
+    fetchPosts()
 
-    onMounted(() => {
-        fetchPosts()
-    })
+    // onMounted(() => {
+    // fetchPosts()
+    // })
 
-    return { posts, isLoading }
-}
+    return { post, posts, isLoading }
+};
 
-export default usePosts
+export default usePosts;
+
+
+
