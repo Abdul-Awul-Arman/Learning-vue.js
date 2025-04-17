@@ -4,19 +4,26 @@
         <div v-else class="post-card">
             <h1 class="post-title">Post Title: {{ post.title }}</h1>    
             <p class="post-body"><span class="label">Title:</span> {{ post.body }}</p>
+            <button >ClickToChangeLayout</button>
         </div>
     
 </template>
 <script setup>
-import { usePosts } from '#imports';
 import { useRoute } from 'vue-router';
 
 definePageMeta({
-    layout:'default',
-
+    layout: "custom"
 });
 const router=useRoute();
+onMounted(()=>{
+  if(isNaN(router.params.id)){
+    throw new Error(" page not found");
+  }
+})
 const {post,isLoading}=usePosts(router.params.id)
+
+
+
 
 
 </script>

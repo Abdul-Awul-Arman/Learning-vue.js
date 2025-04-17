@@ -2,16 +2,35 @@
   <div class="home">
     <h1 class="title">📝 Blog Posts</h1>
 
-    <div v-if="isLoading" class="loading">Loading posts...</div>
-   
+   <h1 v-if="data.length===0" >There is no post</h1>
     <div v-else class="posts">
-      <PostCard v-for="post in posts" :key="post.id" :post="post" />
+      <PostCard v-for="post in data" :key="post.id" :post="post" :updatePost="()=>updatePost(post.id)" />
     </div>
   </div>
 </template>
 
 <script setup>
-const { posts, isLoading } = usePosts()
+
+const data=ref([]);
+
+onMounted(()=>{
+  if(!localStorage.getItem('data')){
+    
+    localStorage.setItem("data",JSON.stringify([])) ;
+  }
+  data.value=JSON.parse(localStorage.getItem("data"));
+  
+})
+
+function updatePost(id){
+  let existing= JSON.parse(localStorage.getItem("data"))
+   let newArray= existing.filter((item)=>id !=item.id)
+
+   localStorage.setItem("data",JSON.stringify(newArray));
+
+
+};
+
 </script>
 
 <style scoped>
