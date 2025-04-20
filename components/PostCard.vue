@@ -1,40 +1,34 @@
 <template>
-  <div class="post-card">
-    <Transition name="fade">
-      <h1 class="post-title">User ID: {{ post.title }}</h1>
-    </Transition>
+  <Transition>
 
-    <p class="post-body">
-      <span class="label">Title:</span> {{ post.body }}
-    </p>
-
-    <NuxtLink class="details-link" :to="`/${post.id}`">Details</NuxtLink>
-
-    <div class="buttons">
-      <button @click="toggle = !toggle" class="btn toggle-btn">Hide Title</button>
-      <button @click="updatePost()" class="btn delete-btn">Delete</button>
+    <div class="post-card">
+      <Transition name="fade">
+        <h1 class="post-title">User ID: {{ post.title }}</h1>
+      </Transition>
+      
+      <p class="post-body">
+        <span class="label">Title:</span> {{ post.body }}
+      </p>
+      
+      <NuxtLink class="details-link" :to="`/${post.id}`">Details</NuxtLink>
+      
+      <div class="buttons">
+        <button @click="toggle = !toggle" class="btn toggle-btn">Hide Title</button>
+        <button @click="emit('postId',post.id)" class="btn delete-btn">Delete</button>
+      </div>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <script setup>
 const props = defineProps({
   post:{
     type:Object
-  },
-  updatePost:{
-    type:Function
   }
-})
+});
+const toggle = ref(true);
 
-
-
-
-const toggle = ref(true)
-
-
-
-
+const emit= defineEmits(['postId']);
 </script>
 
 <style scoped>

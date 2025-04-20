@@ -17,7 +17,9 @@
 <script setup>
 import { ref } from 'vue';
 const title = ref('')
-const description = ref('')
+const description = ref('');
+
+const router =useRouter();
 
 const input=useTemplateRef('my-input');
 onMounted(()=>{
@@ -47,6 +49,9 @@ function clickHandle(){
 
     title.value="";
     description.value="";
+    
+    router.push({path:"/"})
+
     
 }
 
