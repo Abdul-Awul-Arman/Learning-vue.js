@@ -8,6 +8,8 @@
         <li><NuxtLink to="/about">About</NuxtLink></li>
         <li><NuxtLink to="/contact">Contact</NuxtLink></li>
         <li><NuxtLink to="/createBlog">Create Blog</NuxtLink></li>
+        <li><NuxtLink to="/login">Login</NuxtLink></li>
+        <li><NuxtLink to="/logout">Logout</NuxtLink></li>
       </ul>
     </nav>
 
@@ -40,8 +42,8 @@
   align-items: center;
   background-color: white;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  width: 1200px;
+  
+  width:1200px;
   margin-inline:auto ;
 }
 

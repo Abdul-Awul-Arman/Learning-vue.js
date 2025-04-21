@@ -7,10 +7,18 @@
 
     <label for="description" class="form-label">
       Description
-      <input v-model="description" type="text" name="description" class="form-input" />
+      <input v-model="description" @keydown.enter="clickHandle" type="text" name="description" class="form-input" />
     </label>
 
-    <button @click="clickHandle" class="form-button">Add Post</button>
+    <button
+  type="button"
+  @click="clickHandle"
+  
+  class="form-button"
+>
+  Add Post
+</button>
+
   </div>
 </template>
 

@@ -42,7 +42,7 @@ const emit= defineEmits(['postId']);
 }
 
 .post-card {
-  max-width: 500px;
+  width: 400px;
   margin: 40px auto;
   padding: 24px;
   background-color: #fff;

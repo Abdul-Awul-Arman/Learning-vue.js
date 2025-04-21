@@ -28,6 +28,10 @@ const data=ref([]);
 const isShow=ref(false);
 const id=ref(0)
 
+// definePageMeta({
+//   middleware:'auth'
+// })
+
 onMounted(()=>{
   if(!localStorage.getItem('data')){
     
@@ -69,7 +73,7 @@ function postIdEvent(postId){
 
 .home {
   padding: 40px 20px;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -86,7 +90,8 @@ function postIdEvent(postId){
 }
 
 .posts {
-  display: grid;
+  display:flex;
+  flex-wrap: wrap;
   gap: 20px;
 }
 
